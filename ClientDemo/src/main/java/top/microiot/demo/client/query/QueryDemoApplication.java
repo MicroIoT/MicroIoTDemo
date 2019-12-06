@@ -13,10 +13,9 @@ import org.springframework.data.domain.Page;
 
 import top.microiot.api.client.HttpClientSession;
 import top.microiot.api.dto.RestPage;
-import top.microiot.demo.domain.TestChoice;
 import top.microiot.demo.domain.DeviceDef;
+import top.microiot.demo.domain.TestChoice;
 import top.microiot.domain.Device;
-import top.microiot.domain.DeviceType;
 import top.microiot.domain.Event;
 import top.microiot.domain.Site;
 import top.microiot.domain.SiteType;
@@ -80,10 +79,10 @@ public class QueryDemoApplication implements CommandLineRunner{
 
 		DistinctInfo distinct = new DistinctInfo();
 		distinct.setField("attributes.model.value");
-		distinct.setReturnClass(DeviceType.class);
-		List<String> sited = session.getEntityDistinct(Device.class, distinct, new ParameterizedTypeReference<List<String>>() {});
-		for(String g : sited) {
-			System.out.println(g);
+		distinct.setReturnClass(Device.class);
+		List<String> models = session.getEntityDistinct(Device.class, distinct, new ParameterizedTypeReference<List<String>>() {});
+		for(String model : models) {
+			System.out.println(model);
 		}
 		
 		distinct.setField("siteType");
