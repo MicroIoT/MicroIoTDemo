@@ -4,6 +4,7 @@ package top.microiot.demo.client.action;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -30,14 +31,11 @@ public class ActionDemoApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		Date start = format.parse("2019-01-01");
-		Date end = format.parse("2019-01-11");
-		Filter filter = new Filter(start, end);
+		Filter filter = new Filter(new Date(), new Date());
 		
 		session.actionAsync(DeviceDef.ID, DeviceDef.ActionGetHistory, filter, new ParameterizedTypeReference<List<Record>>() {}, onAction);
 		
-		List<Record> records = session.action(DeviceDef.ID, DeviceDef.ActionGetHistory, filter, new ParameterizedTypeReference<List<Record>>() {});
+		Set<Record> records = session.action(DeviceDef.ID, DeviceDef.ActionGetHistory, filter, new ParameterizedTypeReference<Set<Record>>() {});
 		for(Record record : records) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			System.out.println("sync record:  from: " + sdf.format(record.getStartTime()) + " to: " + sdf.format(record.getEndTime()));
