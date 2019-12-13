@@ -19,13 +19,13 @@ public class SetHandler extends SetRequestSubscriber {
 	
 	@Override
 	public void init() {
-		addType(DeviceDef.AttributeLocked, Boolean.class);
+		addType(DeviceDef.AttributeLocked, boolean.class);
 	}
 
 	@Override
 	public void setAttribute(User requester, Device device, String attribute, Object value) {
 		if(attribute.equals(DeviceDef.AttributeLocked)) {
-			Boolean locked = (Boolean)value;
+			boolean locked = (boolean)value;
 			
 			Location location = getLocation();
 			

@@ -29,15 +29,24 @@ public class ReportDemoApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		IoTDevice device = new IoTDevice(session, null, null, null);
 		
+		StateChangedAlarm alarm = getAlarm();
+		device.reportAlarm(DeviceDef.AlarmStateChangedAlarm, alarm);
+		
+		Map<String, Object> events = new HashMap<String, Object>();
+		Location location = getLocation();
+		events.put("location", location);
+		device.reportEvent(events);
+	}
+	private StateChangedAlarm getAlarm() {
+		Location location = getLocation();
+		StateChangedAlarm alarm = new StateChangedAlarm(location, true);
+		return alarm;
+	}
+	private Location getLocation() {
 		Random r1 = new Random();
 		double x = 180 * r1.nextDouble();
 		double y = 90 * r1.nextDouble();
 		Location location = new Location(x, y);
-		StateChangedAlarm alarm = new StateChangedAlarm(location, true);
-		device.reportAlarm(DeviceDef.AlarmStateChangedAlarm, alarm);
-		
-		Map<String, Object> events = new HashMap<String, Object>();
-		events.put("location", location);
-		device.reportEvent(events);
+		return location;
 	}
 }
