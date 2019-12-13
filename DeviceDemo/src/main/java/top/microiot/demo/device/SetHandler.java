@@ -26,9 +26,7 @@ public class SetHandler extends SetRequestSubscriber {
 	public void setAttribute(User requester, Device device, String attribute, Object value) {
 		if(attribute.equals(DeviceDef.AttributeLocked)) {
 			boolean locked = (boolean)value;
-			
 			Location location = getLocation();
-			
 			StateChangedAlarm alarm = new StateChangedAlarm(location, locked);
 			this.getWebsocketDeviceSession().getSession().reportAlarm(DeviceDef.AlarmStateChangedAlarm, alarm);
 		} else {

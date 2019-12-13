@@ -34,7 +34,7 @@ public class ReportDemoApplication implements CommandLineRunner{
 		
 		Map<String, Object> events = new HashMap<String, Object>();
 		Location location = getLocation();
-		events.put("location", location);
+		events.put(DeviceDef.AttributeLocation, location);
 		device.reportEvent(events);
 	}
 	private StateChangedAlarm getAlarm() {

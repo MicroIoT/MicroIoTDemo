@@ -19,18 +19,28 @@ public class GetHandler extends GetRequestSubscriber {
 	@Override
 	public Object getAttributeValue(User requester, Device device, String attribute) {
 		if(attribute.equals(DeviceDef.AttributeLocation)) {
-			Random r = new Random();
-			double x = 180 * r.nextDouble();
-			double y = 90 * r.nextDouble();
-			Location location = new Location(x, y);
+			Location location = getLocation();
 			return location;
 		}else if(attribute.equals(DeviceDef.AttributeLocked)) {
-			Random r = new Random();
-			boolean locked = r.nextBoolean();
+			boolean locked = getLocked();
 			return locked;
 		}else {
 			throw new ValueException("get unknow attribute: " + attribute);
 		}
+	}
+
+	private boolean getLocked() {
+		Random r = new Random();
+		boolean locked = r.nextBoolean();
+		return locked;
+	}
+
+	private Location getLocation() {
+		Random r = new Random();
+		double x = 180 * r.nextDouble();
+		double y = 90 * r.nextDouble();
+		Location location = new Location(x, y);
+		return location;
 	}
 
 }
