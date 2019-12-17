@@ -1,6 +1,6 @@
 <p align="center"><img src="https://github.com/MicroIoT/website/blob/master/src/statics/icons/favicon-96x96.png" alt="Logo"></p>
 <h1 align="center">MicroIoT API for Java Demo</h1>
-本DEMO包含两大模块：[ClientDemo](https://github.com/MicroIoT/MicroIoTDemo/tree/master/ClientDemo)和[DeviceDemo](https://github.com/MicroIoT/MicroIoTDemo/tree/master/DeviceDemo)，分别提供MicroIoT API for Java应用端和设备端的使用示例，在使用前请做好如下准备。
+本DEMO包含两大模块：[ClientDemo](https://github.com/MicroIoT/MicroIoTDemo/tree/master/ClientDemo) 和 [DeviceDemo](https://github.com/MicroIoT/MicroIoTDemo/tree/master/DeviceDemo)，分别提供MicroIoT API for Java应用端和设备端的使用示例，在使用前请做好如下准备。
 
 ## 开发准备
 
