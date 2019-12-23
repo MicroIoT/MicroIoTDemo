@@ -23,6 +23,7 @@ public class AlarmDemoApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		onAlarm.setDurable(true);
 		wsession.subscribe(DeviceDef.ID, onAlarm);
 	}
 
