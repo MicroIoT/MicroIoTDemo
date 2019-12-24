@@ -28,6 +28,7 @@ public class ActionHandler extends ActionRequestSubscriber {
 
 	@Override
 	public Object action(User requester, Device device, String action, Object request) {
+		System.out.println(requester.getUsername() + " action " + device.getString() + " action: " + action);
 		if(action.equals(DeviceDef.ActionGetHistory)) {
 			Filter filter = (Filter)request;
 			

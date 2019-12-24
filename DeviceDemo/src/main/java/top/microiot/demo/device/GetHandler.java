@@ -18,6 +18,7 @@ public class GetHandler extends GetRequestSubscriber {
 
 	@Override
 	public Object getAttributeValue(User requester, Device device, String attribute) {
+		System.out.println(requester.getUsername() + " get " + device.getString() + " attribute: " + attribute);
 		if(attribute.equals(DeviceDef.AttributeLocation)) {
 			Location location = getLocation();
 			return location;

@@ -24,6 +24,7 @@ public class SetHandler extends SetRequestSubscriber {
 
 	@Override
 	public void setAttribute(User requester, Device device, String attribute, Object value) {
+		System.out.println(requester.getUsername() + " set " + device.getString() + " attribute: " + attribute);
 		if(attribute.equals(DeviceDef.AttributeLocked)) {
 			boolean locked = (boolean)value;
 			Location location = getLocation();
